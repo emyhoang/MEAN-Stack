@@ -1,0 +1,76 @@
+<html>
+
+<head>
+  <title>Coding Dojo Survey</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // trigger connection event in our server!
+      var socket = io.connect();
+
+      $('#submitbutton').click(function (event) {
+        event.preventDefault();
+
+        console.log('button clicked')
+
+        socket.emit('post_form', {
+          name: $('#name').val(),
+          location: $('#location').val(),
+          language: $('#language').val(),
+          comments: $('#comments').val()
+        });
+      });
+
+      socket.on('updateMessage', function (data) {
+        $("#surveyForm").html(`You emitted the following information to the server: ${JSON.stringify(data)}`)
+      });
+      socket.on('luckyNumber', function (number) {
+        $("#lucky_number").html('<p>Your lucky number is: ' + number);
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="surveyForm">
+
+  </div>
+  <div id="lucky_number">
+
+  </div>
+
+  <div style='border: 1px solid black'>
+    <form action='/result' method='post'>
+      Your Name: <input type='text' name='name' id="name">
+      <br><br>
+      Dojo Location:
+      <select name='location' id="location">
+        <% for (var x in locations) { %>
+        <option value="<%= locations[x] %>">
+          <%= locations[x] %>
+        </option>
+        <% } %>
+      </select>
+      <br><br>
+      Favorite Language:
+      <select name='language' id="language">
+        <% for (var x in languages) { %>
+        <option value=" <%= languages[x] %> ">
+          <%= languages[x] %>
+        </option>
+        <% } %>
+      </select>
+      <br><br>
+      Comment (optional):
+      <br><br>
+      <textarea name='comment' id="comments" rows="10" cols="50"></textarea>
+      <br><br>
+      <input id="submitbutton" type='submit' value='Submit'>
+    </form>
+  </div>
+
+</body>
+
+</html>

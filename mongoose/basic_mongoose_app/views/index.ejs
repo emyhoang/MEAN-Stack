@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>Mongoose</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+<body>
+  <form action='/users' method='post'>
+    Name: <input type='text' name='name'>
+    Age: <input type='number' name='age'>
+    <input type='submit' value='submit'>
+
+  </form>
+
+  <div>
+    <br>
+    <hr>
+    <h3>users:</h3>
+    <% for (var i in info) { %>
+    <p>Name:
+      <%= info[i].name %>
+    </p>
+    <p>Age:
+      <%= info[i].age %>
+    </p><br>
+    <hr><br>
+    <% } %>
+  </div>
+
+</body>
+
+</html>

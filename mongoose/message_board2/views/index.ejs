@@ -1,0 +1,95 @@
+<html>
+
+<head>
+  <title>Mongoose Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+<body>
+  <% if(messages.addMessage) { %>
+  <% for (var x of messages.addMessage) { %>
+  <h5>
+    <%= x %>
+  </h5>
+  <% } %>
+  <% } %>
+
+  <div class='container'>
+    <div class='row'>
+      <h2>The Dojo Message Board </h2>
+    </div>
+    <hr>
+    <div>
+
+      <form action='/addMessage' method='post'>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type='text' name='name' class="form-control"> <br />
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea name='message' class="form-control"></textarea> <br />
+        </div>
+        <input type='submit' value='submit message!' class='btn btn-success form-control'><br />
+      </form>
+
+    </div>
+    <br />
+    <div class='row ml-0'>
+      <h4>See All Messages Below:</h4>
+    </div>
+    <div class="ml-4">
+      <% for (var x in allMessages) { %>
+      <div class='row ml-0'>
+        <h5>Name:
+          <%= allMessages[x].name %>
+        </h5>
+      </div>
+      <div class='row ml-0'>
+        <h5>Message:</h5>
+        <%= allMessages[x].message %>
+      </div>
+
+      <div class='ml-4'>
+        <h6>All Comments:</h6>
+        <div class='ml-4'>
+          Name:
+          <%= allMessages[x].comment[0].name %>
+          <br />
+          Comment:
+          <%= allMessages[x].comment[0].comment %>
+        </div>
+      </div>
+
+      <div> <br />
+        <form action="/addComment/<%= allMessages[x]._id %>" method="post" class='ml-4'>
+          <h6>Add A Comment:</h6>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type='text' name='name' class="form-control"> <br />
+          </div>
+          <div class="form-group">
+            <label for="message">Comment:</label>
+            <textarea name='comment' class="form-control"></textarea> <br />
+          </div>
+          <input type='submit' value='post comment' class='btn btn-primary'><br />
+        </form>
+      </div>
+      <hr>
+      <% } %>
+    </div>
+  </div>
+
+</body>
+
+
+
+</html>

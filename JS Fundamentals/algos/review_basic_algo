@@ -1,0 +1,147 @@
+function print() {
+  for(var i= 1; i < 256; i++){
+    console.log(i)
+  }
+}
+print()
+
+
+function printAndSum() {
+  var sum = 0;
+  for(var i= 0; i < 256; i++){
+    sum= sum + i;
+    console.log(sum)
+
+  }
+}
+printAndSum()
+
+function findMax(arr) {
+  var max= arr[0];
+    for(var i=1; i< arr.length; i++ ){
+        if(max<arr[i]){
+            max= arr[i];
+        }
+    }
+    console.log(max);
+    return max;
+
+}
+findMax([5,2,9])
+
+function findOdds(){
+   var arr = [];
+    var i = 1;
+    while(i<=255){
+        if(i%2===1){
+            arr.push(i);
+        }
+        i++;
+    }
+    return arr;
+}
+findOdds()
+
+function greaterThanY(arr,y) {
+  for(var i=0; i<arr.length; i++){
+    if(arr[i] > y){
+      console.log(arr[i]);
+    }
+  }
+}
+greaterThanY([5,2,8,9],6)
+
+function findMaxMinAvg(arr) {
+  var max= arr[0];
+  var min= arr[0];
+  sum = arr[0];
+    for(var i=1; i< arr.length; i++ ){
+        if(max<arr[i]){
+            max= arr[i];
+        }
+        if(min>arr[i]){
+            min= arr[i];
+        }
+        sum = sum + arr[i];
+    }
+    var avg= sum/arr.length;
+    var arrnew= [max,min,avg];
+    console.log(arrnew)
+    return arrnew;
+}
+findMaxMinAvg([5,2,9]);
+
+function swap(arr) {
+  for(var i=0; i<arr.length; i++){
+    if(arr[i]<0){
+      arr[i]= 'dojo'
+    }
+  }
+   return arr;
+}
+swap([2,3,-1,9]);
+
+
+
+function printOdds(){
+    var i = 1;
+    while(i<=255){
+        if(i%2===1){
+            console.log(i);
+        }
+        i++;
+    }
+
+}
+printOdds()
+
+
+function iterate(arr) {
+  for(var i=0; i <arr.length; i++){
+    console.log(arr[i]);
+  }
+}
+iterate(['5,4,2,1'])
+
+function avg(arr) {
+  sum=0
+  for(var i=0; i<arr.length; i++){
+    sum+= arr[i];
+  }
+  var avg = sum/arr.length
+  return avg;
+}
+
+function squareVals(arr) {
+  for(var i=0; i<arr.length; i++){
+    arr[i]*arr[i];
+  }
+   return arr;
+}
+
+
+function noNeg(arr){
+  for(var i=0; i<arr.length; i++){
+    if(arr[i]<0){
+      arr[i]= 0
+    }
+  }
+   return arr;
+}
+noNeg([2,3,-1,9]);
+
+
+function shiftValsLeft(arr){
+  for(var i=0; i<arr.length; i++){
+    for(var j=1; j<arr.length; j++){
+      arr[i] = arr[j];
+    }
+
+  }
+   return arr;
+}
+shiftValsLeft([2,3,-1,9]);
+
+
+
+

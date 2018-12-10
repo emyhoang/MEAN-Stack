@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>Mongoose Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+    
+  </script>
+</head>
+
+<body>
+  <div style='border: 2px green solid; border-radius: 10px; min-height: 600px; width: 100%'>
+    <h1>Welcome to the Zoo! See all animals below </h1>
+    <a href='/mongooses/new'>Create A New Mongoose</a>
+
+    <% for (var x in allMongooses) { %>
+    <h3>"
+      Name:
+      <%= allMongooses[x].name %>, Favorite Food:
+      <%= allMongooses[x].favorite_food %>
+      <a href="mongooses/<%= allMongooses[x]._id%>">Check Out This Animal</a>
+    </h3>
+    <hr>
+    <% } %>
+
+  </div>
+</body>
+
+
+
+</html>

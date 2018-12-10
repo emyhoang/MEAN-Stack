@@ -1,0 +1,114 @@
+<html>
+
+<head>
+  <title>Login/Register</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+
+<body>
+  <% if(messages.register) { %>
+  <div class="alert alert-danger" role="alert">
+    <% for (var x of messages.register) { %>
+    <h5>
+      <%= x %>
+    </h5>
+    <% } %>
+  </div>
+  <% } %>
+
+  <% if(messages.error) { %>
+  <div class="alert alert-danger" role="alert">
+    <h5>
+      <%= messages.error %>
+    </h5>
+  </div>
+  <% } %>
+
+  <% if(messages.success) { %>
+  <div class="alert alert-success" role="alert">
+    <h5>
+      <%= messages.success %>
+    </h5>
+  </div>
+  <% } %>
+  <% if(messages.email_or_pass) { %>
+  <div class="alert alert-danger" role="alert">
+    <h5>
+      <%= messages.email_or_pass %>
+    </h5>
+  </div>
+  <% } %>
+
+  <% if(messages.noEmailPassword) { %>
+  <div class="alert alert-danger" role="alert">
+    <h5>
+      <%= messages.noEmailPassword %>
+    </h5>
+  </div>
+  <% } %>
+
+
+
+  <div class="container-fluid">
+    <h1>Login and Registration</h1>
+    <br>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3>New user? Register here!</h3>
+        <form action='/register' method='POST'>
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="first_name" name="first_name" class="form-control" id="first_name" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="last_name" name="last_name" class="form-control" id="last_name" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
+          </div>
+          <div class="form-group">
+            <label for="birthday">Birthday</label>
+            <input type="date" name="birthday" class="form-control" id="confirm_password" placeholder="When's your birthday?">
+          </div>
+          <button type="submit" class="btn btn-success">Register</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h3>Welcome back! Please Login</h3>
+        <form action='/login' method='POST'>
+          <div class="form-group">
+            <label for="login_email">Email address</label>
+            <input type="email" name="email" class="form-control" id="login_email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="login_password">Password</label>
+            <input type="password" name="password" class="form-control" id="login_password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

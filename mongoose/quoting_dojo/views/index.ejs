@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title>Quote Dojo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+<body>
+  <!-- based on the structure of your messages, determine how to display them -->
+  <% if(messages.addQuote) { %>
+  <% for (var x of messages.addQuote) { %>
+  <h3>
+    <%= x %>
+  </h3>
+  <% } %>
+  <% } %>
+  <div style='border: 2px blue solid; border-radius: 10px; min-height: 400px; width: 75%'>
+    <h1>Welcome to Quoting Dojo</h1>
+    <form action='/process' method='post'>
+      Your Name: <input type='text' name='name'> <br /><br />
+      Your Quote: <textarea name='message'></textarea> <br /><br />
+      <input type='submit' value='Add My Quote!' class='btn btn-success'><br /><br />
+    </form>
+    <form action='/quotes'>
+      <input type='submit' value='skip to quotes!' class='btn btn-success'><br />
+    </form>
+  </div>
+</body>
+<% if(typeof(errors) != 'undefined' ) { %>
+<span style="color: red">Something went wrong</span>
+<p>
+  <%= errors%>
+</p>
+<% for (var x in errors) { %>
+<h3>
+  <%= errors[x].messages %>
+</h3>
+<% } %>
+<% } %>
+
+
+</html>

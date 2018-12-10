@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <title>Mongoose</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+<body>
+  <div style='border: 2px green solid; border-radius: 10px; min-height: 600px; width: 100%'>
+    <h1>Welcome to my (
+      <%=mongoose.name%>) Page! See my information below: </h1>
+    <h3>
+      Name:
+      (
+      <%=mongoose.name%>)
+      <hr>
+      Favorite Food:
+      (
+      <%=mongoose.favorite_food%>)
+      <hr>
+      My ID number is "
+      <%=mongoose._id%>"
+      <hr>
+      <a href="/mongooses/edit/<%=mongoose._id%>">Wanna Edit this Mongoose, Click Here</a>
+      <br /> <br />
+      <form action="/mongooses/destroy/<%=mongoose._id%>" method="post">
+        <input type="submit" value="delete Mongoose">
+      </form>
+      <a href="/">Go Back</a>
+    </h3>
+    <hr>
+
+
+  </div>
+</body>
+
+
+
+</html>

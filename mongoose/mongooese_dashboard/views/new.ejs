@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>Create a new mongoose</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+  </script>
+</head>
+
+<body>
+  <% if(messages.addAnimal) { %>
+  <% for (var x of messages.addAnimal) { %>
+  <h3>
+    <%= x %>
+  </h3>
+  <% } %>
+  <% } %>
+  <div style='border: 2px blue solid; border-radius: 10px; min-height: 400px; width: 75%'>
+    <h1>Create a new mongoose</h1>
+    <form action='/mongooses' method='post'>
+      Name: <input type='text' name='name'> <br /><br />
+      Favorite Food: <textarea name='favorite_food'></textarea> <br /><br />
+      <input type='submit' value='submit!' class='btn btn-success'><br /><br />
+    </form>
+  </div>
+</body>
+
+
+
+</html>

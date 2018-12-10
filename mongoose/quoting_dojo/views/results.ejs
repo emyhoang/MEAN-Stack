@@ -1,0 +1,12 @@
+<body>
+  <h1>Here are all the quotes!</h1>
+  <% for (var x in allQuotes) { %>
+  <h4>"
+    <%= allQuotes[x].message %>"</h4>
+  <h5>-
+    <%= allQuotes[x].name %> at
+    <%=allQuotes[x].updatedAt%>
+  </h5>
+  <hr>
+  <% } %>
+</body>
